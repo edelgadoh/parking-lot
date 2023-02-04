@@ -1,0 +1,12 @@
+spring:
+    mvc:
+        pathmatch:
+            matching-strategy: ant-path-matcher
+
+vehicle-type:
+    config:
+        MOTORCYCLE:
+            - CAR
+            - VAN
+        CAR:
+            - VAN
