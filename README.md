@@ -62,3 +62,13 @@ All the project was tested on:
 - Remove a vehicle from the lot
   - REMOVE http://localhost:8080/parking-spots/vehicle-code/{code}
 
+---
+
+## Useful endpoints
+
+- List all spots with the current status
+  - GET http://localhost:8080/spots/list
+
+- Include extra spots in the last position
+  - POST http://localhost:8080/spots
+    - { "code": "G8", "type": "CAR"}

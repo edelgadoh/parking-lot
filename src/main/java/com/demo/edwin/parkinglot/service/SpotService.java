@@ -22,8 +22,12 @@ public class SpotService {
     @Autowired
     private VehicleTypeConfig vehicleTypeConfig;
 
-    public Long getSpots(Boolean available) {
+    public Long getAllSpots(Boolean available) {
         return spotRepository.findByAvailable(available).stream().count();
+    }
+
+    public List<Spot> getAllSpots() {
+        return spotRepository.findAll();
     }
 
     public Spot saveSpot(SpotDTO spotDTO) {
@@ -41,6 +45,9 @@ public class SpotService {
         if (previousSpot.isPresent()) {
             Spot spot = previousSpot.get();
             spot.setSpotIdNext(spotSaved.getId());
+            spotRepository.save(spot);
+            spotSaved.setSpotIdPrevious(spot.getId());
+            spotRepository.save(spotSaved);
         }
 
         return spotSaved;
@@ -53,7 +60,6 @@ public class SpotService {
         if (spots.isPresent()) {
             return List.of(spots.get());
         }
-
 
         if (vehicleType.equals(VehicleType.VAN)) {
             //Check if exists 3 adjacent spots of CAR type and are available
