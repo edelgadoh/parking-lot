@@ -1,4 +1,4 @@
-# parkingSpot-lot-system-poc
+# parking-lot-system-poc
 Java Demo Application with SpringBoot for Parking-Lot API.
 
 ## Build + Tests
